@@ -1,9 +1,12 @@
-package com.amdocs.ratingsdataservice.models;
+package com.amdocs.productcatalogservice.models;
 
 public class Rating {
 
     private String productId;
     private int rating;
+
+    public Rating() {
+    }
 
     public Rating(String productId, int rating) {
         this.productId = productId;
