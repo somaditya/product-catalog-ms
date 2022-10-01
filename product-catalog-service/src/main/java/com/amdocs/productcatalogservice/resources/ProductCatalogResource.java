@@ -20,12 +20,13 @@ public class ProductCatalogResource {
 
     @RequestMapping("/{userId}")
     public List<CatalogItem> getCatalog(@PathVariable("userId") String userId) {
-
+        // get ratings for user
         UserRating ratings = restTemplate.getForObject("http://localhost:8083/ratingsdata/user/" + userId, UserRating.class);
 
         return ratings.getUserRating().stream().map(rating -> {
+            // for each product get product info service and get details
             Product product = restTemplate.getForObject("http://localhost:8082/products/" + rating.getProductId(), Product.class);
-
+            // compose catalog
             return new CatalogItem(product.getName(), product.getDesc(), rating.getRating());
         }).toList();
     }
