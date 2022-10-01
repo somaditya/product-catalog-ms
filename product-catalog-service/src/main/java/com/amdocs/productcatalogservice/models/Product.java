@@ -1,10 +1,13 @@
-package com.amdocs.productinfoservice.models;
+package com.amdocs.productcatalogservice.models;
 
 public class Product {
 
     private String productId;
     private String name;
     private String desc;
+
+    public Product() {
+    }
 
     public Product(String productId, String name, String desc) {
         this.productId = productId;
